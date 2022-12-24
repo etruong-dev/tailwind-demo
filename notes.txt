@@ -1,6 +1,9 @@
 Tailwind CSS Tutorial - the Net Ninja
 
 #1 - Intro & Setup
+-----------------------------------------------------------------------------
+*refer to `tailwindcss.com/docs/instrallation` for updated setup instructions
+-----------------------------------------------------------------------------
 > npm init -y
 > npm install tailwindcss
 create new folder named "public"
@@ -13,5 +16,33 @@ create new folder named "src"
 
 #2 - HTML Template
 inside public folder, create new file named "index.html"
+inside public folder, create new folder named "img"
 
 #3 - Fonts & Colors
+------------------------------------------------------------------------------
+*bug: font and colors not showing v3.0+ (use new setup instructions @ website)
+    create tailwind.config.js file in root dir
+        > npx tailwindcss init
+    update tailwind.config.js file by adding in content[]
+        content: ['./public/**/*.{html,js}'],
+    run the following commands
+        > npm run build-css
+        > npx tailwindcss -i ./src/styles.css -o ./public/styles.css --watch
+------------------------------------------------------------------------------
+Documentation for fonts and colors
+    https://tailwindcss.com/docs/font-size
+    https://tailwindcss.com/docs/text-color
+example: <p class="text-rose-400 text-6xl font-semibold">hello world</p>
+
+#4 - Margin, Padding & Borders
+Documentation
+    https://tailwindcss.com/docs/padding
+        some padding variables are left out in purpose: p-13, p-15, etc. 
+
+#5 - Tailwind Config
+    Adding new values to extend the default values. Need to build and process
+        tailwind.config file. *old way
+    Can also extend new values in the `tailwind.config.js` file in the extend:{}
+        then rebuild: npm run build-css
+
+#6 - Custom Fonts
