@@ -40,9 +40,40 @@ Documentation
         some padding variables are left out in purpose: p-13, p-15, etc. 
 
 #5 - Tailwind Config
+Generate Tailwind default values (for reference in extenting vaules)
+    > npx tailwindcss init --full
+        *the --full flag will show all hidden default values
     Adding new values to extend the default values. Need to build and process
-        tailwind.config file. *old way
+        tailwind.config file.
     Can also extend new values in the `tailwind.config.js` file in the extend:{}
         then rebuild: npm run build-css
 
 #6 - Custom Fonts
+Googled a custom font called "Nunito"
+    https://fonts.google.com/specimen/Nunito
+    select all font weights and docorations (or only the ones you want to use)
+    and copy the embed code. Our example copies the "@import url ... " in 
+        between the <stlye> elements and place in our src/styles.css file
+    then we need to reference that import in our tailwind.config.js file:
+        extend: {fontFamily: {NunitoName: ['Nunito']}}
+    since we made changes to the config and css file, we need to rebuild again
+        > npm run build-css
+
+#7 - Using Flexbox
+using "flex" will put items next to eachother (instead of top/down)
+justify will position those grouped items to the left, right, center, evenly..
+items-start will align all the grouped items to its top
+    items-end will align to the botton of the div
+    items-center will align all items to the center of the div
+
+#8 - Responsive Classes
+Tailwind eliminates the need for media queries, for auto resizing on different devices
+Tailwind Responsive classes have predefined values for different sizes
+Prefixing values/(utilites), only take effect at the specific breakpoint and above
+    examples: sm:bg-green-500 md:bg-blue-500 lg:bg-pink-500 xl:bg-teal-500
+        background color will change based on the breakpoint, or screen size defined.
+        mobile first approach: if only sm & md was defined, if screen was med or larger,
+            bg will be blue. else, it would be sm:bg-green-500. If it was smaller than sm,
+            then the default value with no prefix `bg-gray-500`
+
+#9 - Cards
