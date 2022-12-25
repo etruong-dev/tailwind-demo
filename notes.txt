@@ -77,3 +77,100 @@ Prefixing values/(utilites), only take effect at the specific breakpoint and abo
             then the default value with no prefix `bg-gray-500`
 
 #9 - Cards
+<div class="bg-white rounded overflow-hidden shadow-md">
+    Rounded: rounds the div corners
+    overflow-hidden: the image overflowed the rounded corners at the top, so we hid it
+    Added margin around the span texts instead of the whole card because we want the img to be full
+Image: class="w-full h-48 sm:h-60 object-cover"
+    w-full: span to the width of the viewport
+    h-48: lock the height of the card to 48px
+    sm:h-60: increase the height to 60px once screensize reaches 640px+
+    ogject-cover: keeps the image from distorting, and auto resizes itself
+
+#10 - Badges
+<div class="text-xs uppercase font-bold rounded-full p-2 absolute top-2 left-2">
+    rounded-full: gives it the pill shape
+    p-2: padding around the text
+    *absolute: position this absolutely inside parent. Parent must have the relative attribute*
+    top-2, left-2: absolute in card, 2 from the top and 2 from the left
+
+#11 - @apply Directive
+Probably my favorite feature so far, instead of having to define all the values/utilities in the class,
+    we can simply extract them to the css file, and use them with the @apply directive
+
+#12 - Grids
+<div class="grid md:grid-cols-3">
+    <div class="md:col-span-1">
+Grid: uses css grid
+grid-cols-3: specifies how many columns in the grid, 3 here for example
+col-span-1: specifies how many columns the content should span in the grid
+
+#13 - buttons
+.btn {
+    @apply rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider
+}
+rounded-full: gives it a "pill" shape
+py-2, px-3: padding 2 on left and right, padding 3 on top and bottom
+uppercase, font-bold: capitalize all letters, bold all text
+cursor-pointer: mouse turns to pointer on hover
+tracking-wider: increase space between text characters
+border-primary: adds an outline or border around text, invisible unless specify weight
+border-2: weight, or thickness of the border
+
+#14 - Icons
+Hero Icons
+search for the icon we want, then copy the svg code. Paste it into our index.html
+then we can add tailwind classes to it to resize and position it
+w-5: set the width of the svg
+inline-block: set the icon to the same inline as the text. (instead of the default block)
+
+#15 - Hover Effects
+prefix taiwind classes with "hover:" to add the effect only on hover
+hover:shadow-inner, hover:bg-primary, hover:text-white
+
+#16 - Responsive Nav
+For the Nav, we want to add "flex" (group home, about, contact together) 
+    so that we can "justify-right" (align flex items to the right of its container)
+    then we want to align all the text inside of the flex to the right by adding "text-right"
+Next we want the icon and text to be on the same line, so we add flex to group them together.
+    also add justify-end to align right. added margin and padding to space them out
+To make it fancy, we added "border-r-4 border-primary" which adds a red border to the right of home
+    to indicate that is where we are. 
+Then added white, or invisible, borders to the right of the other nav items to align with home 
+
+#17 - Responsive Nav Continued
+Dropdown menu for the Nav on smaller screens
+created a new div under main title "Lets get cookin", and pasted our burger-menu svg icon there
+<div class="px-4 cursor-pointer md:hidden">
+    px-4: padding on the x-axis
+    cursor-pointer: to change mouse pointer on hover
+    md:hidden: to hide on medium sized screens
+Then add 'flex' to the container so that the title and the icon sit next to eachother
+Since we want title to be on the left and icon on the right, we use 'justify-between' to put space in between
+The icon will not look centered in the line, so we will also add 'items-center' (easier than adding margins)
+Next we want to hide the menu on smaller screens and show on med+ sized screens
+    We add the classes "hidden md:block"
+        hidden: which is just display:hidden
+        then md:block: which changes display from hidden to block once it detects med+ sized screens
+After we want to program the burger icon on smaller screens to open and close the menu
+    first we need to add an id to menu and the burger icon
+    then, we create a javascript file and attach a click eventListener and a callback function
+
+#18 - Transitions
+Add the 'transition' class to elements that have changing classes that we want to animate
+Then we need to specify what kind of 'ease' we want to use
+    ease-liner: will make it smooth
+    ease-in: slower to begin with, but then speeds up
+    ease-out: slower towards the end
+    ease-in-out: slower at the start and end, but speeds up in the middle
+Lastly, we need to specify how long it should take
+    duration-500: (500 miliseconds)
+----------------------------------------------
+<div class="transition ease-out duration-500>
+----------------------------------------------
+We can also add transition to on hover states
+<div class="transform hover:scale-125 hover:bg-opacity-50 transition ease-out duration-300">
+    transform: to allow transformation, in this case for scaling
+    hover:scale-125: scales the element by 1.25 in the x and y axis (needs to have transform)
+    hover:bg-opacity-50: backgorund opacity reduced to 50% on hover
+    transition ease-out duration-300: then add the following transition classes to apply animations on hover
